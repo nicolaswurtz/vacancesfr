@@ -28,7 +28,7 @@ foreach ($json as $evenement) {
     $zones = explode(' ',str_replace(['ZONE ','ZONES '],'',strtoupper($evenement->fields->zones)));
     $academie = $evenement->fields->location;
     $debut = date('Y-m-d',strtotime($evenement->fields->start_date));
-    $fin = (empty($evenement->fields->end_date)) ? '' : date('Y-m-d',strtotime($evenement->fields->end_date));
+    $fin = (empty($evenement->fields->end_date)) ? '' : date('Y-m-d',strtotime($evenement->fields->end_date.' -1 day'));
     foreach ($zones as $zone) {
         foreach ($academies[$academie] as $dep) {
             if ($titre != "Rentrée scolaire des élèves" and $titre != "Prérentrée des enseignants") {
