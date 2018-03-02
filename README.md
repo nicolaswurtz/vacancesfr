@@ -20,5 +20,7 @@ Petit script en PHP qui linéarise les deux sets de données à la quick & dirty
 
 Il suffit d'exporter ensuite $liste (un array) ou $csv (une liste de lignes avec les champs séparés par des virgules).
 
+**Par défaut le script renvoie $liste en json**.
+
 ## C'est tout ?
 C'est tout.
