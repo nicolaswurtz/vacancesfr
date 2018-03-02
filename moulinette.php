@@ -25,30 +25,27 @@ foreach ($json as $evenement) {
 
 foreach ($json as $evenement) {
     $titre = $evenement->fields->description;
-    $zones = explode(' ',str_replace(['ZONE ','ZONES '],'',strtoupper($evenement->fields->zones)));
     $academie = $evenement->fields->location;
     $debut = date('Y-m-d',strtotime($evenement->fields->start_date));
     $fin = (empty($evenement->fields->end_date)) ? '' : date('Y-m-d',strtotime($evenement->fields->end_date));
-    foreach ($zones as $zone) {
-        foreach ($academies[$academie] as $dep) {
-            if ($titre != "Rentrée scolaire des élèves" and $titre != "Prérentrée des enseignants") {
-                if ($titre == "Vacances d'été") {
-                    $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
-                }
-                if (!empty($fin)) {
-                    $liste[] = array(
-                        'titre'         => $titre,
-                        'zone'          => $zone,
-                        'departement'   => $dep['num_dep'],
-                        'academie'      => $academie,
-                        'debut'         => $debut,
-                        'fin'           => $fin
-                    );
-                    $csv .= $zone.','.$academie.','.$dep['num_dep'].','.$debut.','.$fin.','.$titre."\n";
-                }
+    foreach ($academies[$academie] as $depzone) {
+        if ($titre != "Rentrée scolaire des élèves" and $titre != "Prérentrée des enseignants") {
+            if ($titre == "Vacances d'été") {
+                $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
+            }
+            if (!empty($fin)) {
+                $liste[] = array(
+                    'titre'         => $titre,
+                    'zone'          => $depzone['zone'],
+                    'departement'   => $depzone['num_dep'],
+                    'academie'      => $academie,
+                    'debut'         => $debut,
+                    'fin'           => $fin
+                );
+                $csv .= $depzone['zone'].','.$academie.','.$dep['num_dep'].','.$debut.','.$fin.','.$titre."\n";
             }
         }
-    }
+    } 
 }
 
 // Ici on obtient un array $liste avec chaque zone/departement/periode proposée, ou une liste type CSV dans $csv
