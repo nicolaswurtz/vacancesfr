@@ -41,7 +41,7 @@ foreach ($json as $evenement) {
                     'departement'   => $dep['num_dep'],
                     'academie'      => $academie,
                     'debut'         => $debut,
-                    'fin'           => ($fin != '') ? $fin : ''
+                    'fin'           => $fin
                 );
                 $csv .= $zone.','.$academie.','.$dep['num_dep'].','.$debut.','.$fin.','.$titre."\n";
             }
