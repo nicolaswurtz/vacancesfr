@@ -35,15 +35,17 @@ foreach ($json as $evenement) {
                 if ($titre == "Vacances d\'été") {
                     $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
                 }
-                $liste[] = array(
-                    'titre'         => $titre,
-                    'zone'          => $zone,
-                    'departement'   => $dep['num_dep'],
-                    'academie'      => $academie,
-                    'debut'         => $debut,
-                    'fin'           => $fin
-                );
-                $csv .= $zone.','.$academie.','.$dep['num_dep'].','.$debut.','.$fin.','.$titre."\n";
+                if (!empty(*fin)) {
+                    $liste[] = array(
+                        'titre'         => $titre,
+                        'zone'          => $zone,
+                        'departement'   => $dep['num_dep'],
+                        'academie'      => $academie,
+                        'debut'         => $debut,
+                        'fin'           => $fin
+                    );
+                    $csv .= $zone.','.$academie.','.$dep['num_dep'].','.$debut.','.$fin.','.$titre."\n";
+                }
             }
         }
     }
