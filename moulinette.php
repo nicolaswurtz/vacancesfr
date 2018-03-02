@@ -32,7 +32,7 @@ foreach ($json as $evenement) {
     foreach ($zones as $zone) {
         foreach ($academies[$academie] as $dep) {
             if ($titre != "Rentrée scolaire des élèves" and $titre != "Prérentrée des enseignants") {
-                if ($titre == "Vacances d'été") {
+                if ($titre == "Vacances d\'été") {
                     $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
                 }
                 $liste[] = array(
