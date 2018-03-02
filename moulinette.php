@@ -50,3 +50,4 @@ foreach ($json as $evenement) {
 }
 
 // Ici on obtient un array $liste avec chaque zone/departement/periode proposée, ou une liste type CSV dans $csv
+echo json_encode($liste);
