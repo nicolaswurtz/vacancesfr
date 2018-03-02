@@ -35,7 +35,7 @@ foreach ($json as $evenement) {
                 if ($titre == "Vacances d\'été") {
                     $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
                 }
-                if (!empty(*fin)) {
+                if (!empty($fin)) {
                     $liste[] = array(
                         'titre'         => $titre,
                         'zone'          => $zone,
