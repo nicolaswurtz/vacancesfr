@@ -16,7 +16,7 @@ Voici quelques anomalies relevées :
 - il manque une notion de département qui serait appréciable pour filtrer plus simplement les académies
 
 ## Comment ?
-Petit script en PHP qui linéarise les deux sets de données à la quick & dirty, avec une ligne par zone/periode/departement, très facile ensuite à interroger dans une BDD.
+Petit script en PHP qui linéarise les deux sets de données à la quick & dirty, avec une ligne par zone/periode/departement, très facile ensuite à interroger dans une BDD. Les données de sortie **ne contiennent pas** les évènements ponctuels (la prérentrée des enseignants pour le coup).
 
 Il suffit d'exporter ensuite $liste (un array) ou $csv (une liste de lignes avec les champs séparés par des virgules).
 
