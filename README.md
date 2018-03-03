@@ -13,6 +13,7 @@ Voici quelques anomalies relevées :
 - le champ zone contient sa description dans la donnée, exemple « Zone A » ou « Zones A,B »
 - il n'y a pas de distingo entre un évènement ponctuel (une seule date) et une période (debut - fin)
 - les vacances d'été n'ont pas de date de fin
+- le jour de fin des vacances est le jour de rentrée alors que le jour de début est le premier jour des vacances (soit on a des dates incluses dans la période, soit excluses — dans les données c'est mélangé...)
 - il manque une notion de département qui serait appréciable pour filtrer plus simplement les académies
 
 ## Comment ?
