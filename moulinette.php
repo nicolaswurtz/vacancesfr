@@ -18,7 +18,7 @@ foreach ($json as $evenement) {
     if ($evenement->fields->description == "Rentrée scolaire des élèves") {
         $zones = explode(' ',str_replace(['ZONE ','ZONES '],'',strtoupper($evenement->fields->zones)));
         foreach ($zones as $zone) {
-            $fin_de_l_ete[$zone.date('Y',strtotime($evenement->fields->start_date))] = date('Y-m-d',strtotime($evenement->fields->start_date . ' -1 day'));
+            $fin_de_l_ete[$zone.date('Y',strtotime($evenement->fields->start_date))] = date('Y-m-d',strtotime($evenement->fields->start_date));
         }
     }
 }
@@ -34,6 +34,8 @@ foreach ($json as $evenement) {
                 $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
             }
             if (!empty($fin)) {
+                // on recule la fin d'un jour, les données n'étant pas logiques (soit ven-lun soit sam-dim, là c'est sam-lun)
+                $fin = date('Y-m-d',strtotime($fin . ' -1 day')                
                 $liste[] = array(
                     'titre'         => $titre,
                     'zone'          => $depzone['zone'],
