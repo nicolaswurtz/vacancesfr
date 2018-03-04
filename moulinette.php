@@ -27,15 +27,14 @@ foreach ($json as $evenement) {
     $titre = $evenement->fields->description;
     $academie = $evenement->fields->location;
     $debut = date('Y-m-d',strtotime($evenement->fields->start_date));
-    $fin = (empty($evenement->fields->end_date)) ? '' : date('Y-m-d',strtotime($evenement->fields->end_date));
+    // on recule la fin d'un jour, les données n'étant pas logiques (soit ven-lun soit sam-dim, là c'est sam-lun)
+    $fin = (empty($evenement->fields->end_date)) ? '' : date('Y-m-d',strtotime($evenement->fields->end_date . ' -1 day'));
     foreach ($academies[$academie] as $depzone) {
         if ($titre != "Rentrée scolaire des élèves" and $titre != "Prérentrée des enseignants") {
             if ($titre == "Vacances d'été") {
                 $fin = $fin_de_l_ete[$zone.substr($debut,0,4)];
             }
-            if (!empty($fin)) {
-                // on recule la fin d'un jour, les données n'étant pas logiques (soit ven-lun soit sam-dim, là c'est sam-lun)
-                $fin = date('Y-m-d',strtotime($fin . ' -1 day')                
+            if (!empty($fin)) {               
                 $liste[] = array(
                     'titre'         => $titre,
                     'zone'          => $depzone['zone'],
